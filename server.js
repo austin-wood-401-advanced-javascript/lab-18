@@ -10,7 +10,7 @@ io.on('connection', (socket) => {
     socket.broadcast.emit('file-error', error);
   });
   socket.on('file-saved', fileText => {
-    socket.broadcast.emit('file-saved',fileText);
+    socket.broadcast.emit('file-save',fileText);
   });
 
   socket.on('speak', (payload) => {

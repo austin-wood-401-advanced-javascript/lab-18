@@ -23,13 +23,11 @@ const alterFile = (file) => {
   return loadFile(file)
     .then(buffer => convertBuffer(buffer) )
     .then(buffer => {
-      console.log(file,buffer);
       saveFile(file,buffer);
-      //this is returning undefined, possibly need to check the buffer
+      socket.emit('file-save', buffer.toString());
     })
     .then( success => {
-      console.log('saved!', success);
-      socket.emit('file-save', success);
+      console.log('saved!');
     })
     .catch(error => socket.emit('file-error', error));
 };
